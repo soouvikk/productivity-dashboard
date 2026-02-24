@@ -1,0 +1,357 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0b0c15; /* fallback */
+      color: #eef2fb;
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Dark mode body styles */
+    body.dark-mode {
+      background-color: #03050b;
+      color: #c0c9e0;
+    }
+
+    body.dark-mode .glass-panel {
+      background: rgba(8, 10, 18, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    body.dark-mode .task-item {
+      background: rgba(15, 18, 28, 0.7);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    body.dark-mode .input-fancy {
+      background: rgba(10, 12, 22, 0.9);
+      border: 1px solid #1a1f30;
+    }
+
+    body.dark-mode .input-fancy input::placeholder {
+      color: #6a7a9c;
+    }
+
+    body.dark-mode .badge-stats {
+      background: #0a0e1ae0;
+      border: 1px solid #2a3145;
+    }
+
+    body.dark-mode .dark-toggle {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid #2f3855;
+    }
+
+    body.dark-mode .quote-swing {
+      background: rgba(5, 8, 16, 0.7);
+    }
+
+    body.dark-mode .btn-outline-light {
+      border-color: #3a425e;
+      color: #c0c9e0;
+    }
+
+    body.dark-mode .btn-outline-light:hover {
+      background-color: #1a1f30;
+      border-color: #5a6a90;
+    }
+
+    /* ---------- fullscreen video background ---------- */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.45) contrast(1.2) saturate(1.1);
+      transition: filter 0.3s ease;
+    }
+
+    body.dark-mode #bg-video {
+      filter: brightness(0.25) contrast(1.3) saturate(1.2);
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 30%, rgba(20, 30, 50, 0.55), rgba(5, 7, 18, 0.85));
+      z-index: -1;
+      pointer-events: none;
+      transition: background 0.3s ease;
+    }
+
+    body.dark-mode .video-overlay {
+      background: radial-gradient(circle at 30% 30%, #0a0e1add, #010108);
+    }
+
+    /* ---------- glass panel ---------- */
+    .glass-panel {
+      background: rgba(18, 22, 40, 0.65);
+      backdrop-filter: blur(10px) saturate(100%);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 44px;
+      box-shadow: 0 35px 60px -20px #010014, 0 0 0 1px rgba(255,255,255,0.02) inset;
+      transition: background 0.3s ease, border 0.3s ease;
+    }
+
+    /* ---------- swinging quote area ---------- */
+    .quote-swing {
+      animation: swing 5s infinite ease-in-out;
+      transform-origin: top center;
+      display: inline-block;
+      background: rgba(10, 15, 30, 0.6);
+      backdrop-filter: blur(18px);
+      padding: 1.8rem 3.5rem;
+      border-radius: 80px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 25px 35px -10px black;
+      margin: 1rem 0;
+      transition: background 0.3s ease;
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(1.2deg); }
+      40% { transform: rotate(-1.5deg); }
+      60% { transform: rotate(0.8deg); }
+      80% { transform: rotate(-0.5deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .quote-text {
+      font-size: 2rem;
+      font-weight: 350;
+      line-height: 1.4;
+      text-shadow: 0 4px 15px #00000060;
+      letter-spacing: -0.01em;
+    }
+
+    .quote-author {
+      font-size: 1.25rem;
+      font-weight: 300;
+      opacity: 0.8;
+      margin-top: 0.5rem;
+    }
+
+    /* ---------- time display ---------- */
+    .time-xl {
+      font-size: 3.4rem;
+      font-weight: 600;
+      line-height: 1.1;
+      background: linear-gradient(130deg, #d3e0ff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+    }
+
+    body.dark-mode .time-xl {
+      background: linear-gradient(130deg, #9aabcf, #d0d8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .date-lg {
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: #b0c6f0;
+    }
+
+    body.dark-mode .date-lg {
+      color: #8a9ac0;
+    }
+
+    /* ---------- progress bar deep ---------- */
+    .progress-modern {
+      height: 16px;
+      background: #1f263b;
+      border-radius: 40px;
+      overflow: hidden;
+    }
+
+    .progress-deep {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #306c9f, #1f4a7a, #0e2842);
+      border-radius: 40px;
+      transition: width 0.25s;
+      box-shadow: 0 0 12px #20588c;
+    }
+
+    body.dark-mode .progress-deep {
+      background: linear-gradient(90deg, #1d4b70, #123456, #0a1a2a);
+      box-shadow: 0 0 12px #0f2e44;
+    }
+
+    /* ---------- tasks clean ---------- */
+    .task-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      background: rgba(30, 35, 58, 0.5);
+      backdrop-filter: blur(6px);
+      border-radius: 50px;
+      margin-bottom: 14px;
+      padding: 0.8rem 1.5rem 0.8rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s ease, border 0.3s ease;
+    }
+
+    .task-check {
+      width: 22px;
+      height: 22px;
+      accent-color: #4d7eb3;
+      margin-right: 20px;
+    }
+
+    body.dark-mode .task-check {
+      accent-color: #2a4b70;
+    }
+
+    .task-label {
+      flex: 1;
+      font-weight: 450;
+      font-size: 1.15rem;
+    }
+
+    .completed .task-label {
+      text-decoration: line-through;
+      opacity: 0.55;
+    }
+
+    .delete-task {
+      background: none;
+      border: none;
+      color: #acbedd;
+      font-size: 2rem;
+      line-height: 1;
+      padding: 0 6px;
+      transition: 0.1s;
+    }
+
+    .delete-task:hover {
+      color: #ff8a8a;
+    }
+
+    /* ---------- input ---------- */
+    .input-fancy {
+      background: rgba(20, 25, 45, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 60px;
+      padding: 6px;
+      border: 1px solid #2d3653;
+      display: flex;
+      transition: background 0.3s ease, border 0.3s ease;
+    }
+
+    .input-fancy input {
+      border: none;
+      background: transparent;
+      padding-left: 26px;
+      font-size: 1.15rem;
+      flex: 1;
+      outline: none;
+      color: white;
+    }
+
+    body.dark-mode .input-fancy input {
+      color: #e0e5f5;
+    }
+
+    .input-fancy input::placeholder {
+      color: #9fb0d6;
+      font-weight: 300;
+    }
+
+    .input-fancy button {
+      border-radius: 60px;
+      background: #1f4465;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 0.7rem 2.5rem;
+      transition: background 0.3s ease;
+    }
+
+    .input-fancy button:hover {
+      background: #173a57;
+    }
+
+    body.dark-mode .input-fancy button {
+      background: #12314a;
+    }
+
+    body.dark-mode .input-fancy button:hover {
+      background: #0d2538;
+    }
+
+    /* ---------- footer ---------- */
+    .footer-build {
+      border-top: 1px solid #33415e;
+      padding-top: 1.2rem;
+      font-size: 0.95rem;
+      color: #a0b5da;
+      transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode .footer-build {
+      border-top: 1px solid #1e2538;
+      color: #6f82aa;
+    }
+
+    .dark-toggle {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid #4e6085;
+      border-radius: 50px;
+      padding: 0.3rem 2rem;
+      font-weight: 500;
+      color: #f0f3ff;
+      transition: background 0.3s ease, border 0.3s ease;
+    }
+
+    .badge-stats {
+      background: #1e2940e0;
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      padding: 0.4rem 1.8rem;
+      border: 1px solid #3d4d72;
+      transition: background 0.3s ease, border 0.3s ease;
+    }
+
+    /* Video toggle button */
+    .video-toggle {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid #4e6085;
+      border-radius: 50px;
+      padding: 0.3rem 2rem;
+      font-weight: 500;
+      color: #f0f3ff;
+      margin-left: 10px;
+      transition: background 0.3s ease, border 0.3s ease;
+    }
+
+    body.dark-mode .video-toggle {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid #2f3855;
+    }
+
+    .video-toggle:hover {
+      background: rgba(255,255,255,0.2);
+    }
