@@ -4,35 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard • EnixxWizard</title>
-  <!-- Google Font & Bootstrap (light) -->
+  <!-- Google Font & Bootstrap -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- separate CSS file (embedded for single‑file demo, but presented as external) -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="script.css">
 </head>
 <body>
 
-  <!-- separate video file (bg) -->
+  <!-- Video Background -->
   <video id="bg-video" autoplay muted loop playsinline>
-    <source src="./19660176-hd_1920_1080_24fps.mp4" type="video/mp4">
-    <!-- fallback: unsplash gradient (in case video fails) -->
+    <source src="./19660176-hd_1920_1080_24fps (1) (1).mp4" type="video/mp4">
   </video>
   <div class="video-overlay"></div>
 
   <div class="container py-4 py-lg-5 position-relative" style="z-index: 5;">
 
-    <!-- header -->
-    <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
-      <h1 class="fw-light fs-1" style="color: #ffffffd0;">Dashboard</h1>
-      <div class="d-flex gap-3">
+    <!-- Header -->
+    <div class="header-wrapper">
+      <h1 class="fw-light fs-1">Dashboard</h1>
+      <div class="d-flex gap-2 gap-md-3">
         <span class="badge-stats py-2" id="taskSummary">0 / 0 tasks</span>
         <button class="dark-toggle" id="darkToggle">dark</button>
-        <button class="video-toggle" id="videoToggle">switch video</button>
+        <button class="video-toggle" id="videoToggle">cyberpunk</button>
       </div>
     </div>
 
-    <!-- swinging quote area (Today's quote for you) -->
-    <div class="row mb-5">
+    <!-- Swinging Quote -->
+    <div class="row mb-4 mb-md-5">
       <div class="col-12 text-center">
         <div class="quote-swing">
           <div class="quote-text" id="quoteText">loading inspiration...</div>
@@ -41,16 +40,16 @@
       </div>
     </div>
 
-    <!-- time + progress row -->
-    <div class="row g-4 mb-4">
+    <!-- Time + Progress Row -->
+    <div class="row g-3 g-md-4 mb-4">
       <div class="col-md-6">
-        <div class="glass-panel p-4">
+        <div class="glass-panel p-3 p-md-4">
           <div class="date-lg" id="dateText"></div>
           <div class="time-xl" id="timeText">--:--:--</div>
         </div>
       </div>
       <div class="col-md-6">
-        <div class="glass-panel p-4">
+        <div class="glass-panel p-3 p-md-4">
           <div class="d-flex justify-content-between mb-2">
             <span class="fw-semibold">daily progress</span>
             <span id="progressPercentage">0%</span>
@@ -58,7 +57,7 @@
           <div class="progress-modern">
             <div class="progress-deep" id="progressBar"></div>
           </div>
-          <div class="d-flex gap-4 mt-3 small opacity-75">
+          <div class="progress-stats mt-3 small opacity-75">
             <span id="completedCount">0 completed</span>
             <span id="remainingCount">0 remaining</span>
           </div>
@@ -66,36 +65,38 @@
       </div>
     </div>
 
-    <!-- task section -->
-    <div class="glass-panel p-4 p-xl-5">
-      <div class="d-flex align-items-center justify-content-between mb-4">
+    <!-- Task Section -->
+    <div class="glass-panel p-3 p-md-4 p-xl-5">
+      <div class="d-flex align-items-center justify-content-between mb-3 mb-md-4">
         <h5 class="fw-semibold mb-0">· taskflow ·</h5>
         <span class="badge-stats" id="totalTaskBadge">0</span>
       </div>
 
-      <!-- input group -->
-      <div class="input-fancy mb-5">
+      <!-- Input Group -->
+      <div class="input-fancy mb-4 mb-md-5">
         <input type="text" id="taskInput" placeholder="write a task...">
         <button id="addBtn">add</button>
       </div>
 
-      <!-- task list -->
+      <!-- Task List -->
       <ul class="task-list" id="taskList"></ul>
 
-      <!-- actions -->
-      <div class="d-flex flex-wrap gap-3 mt-5">
-        <button class="btn btn-outline-light rounded-pill px-4" id="clearCompleted">clear completed</button>
-        <button class="btn btn-outline-light rounded-pill px-4" id="resetTasks">reset</button>
-        <span class="ms-auto small opacity-50" id="lastUpdate"></span>
+      <!-- Actions -->
+      <div class="action-buttons gap-2 gap-md-3 mt-4 mt-md-5">
+        <button class="btn btn-outline-light rounded-pill px-3 px-md-4" id="clearCompleted">clear completed</button>
+        <button class="btn btn-outline-light rounded-pill px-3 px-md-4" id="resetTasks">reset</button>
+        <span class="ms-auto small opacity-50 align-self-center" id="lastUpdate"></span>
       </div>
     </div>
 
-    <!-- footer with @build by enixxwizard -->
-    <div class="footer-build d-flex justify-content-between mt-4">
+    <!-- Footer -->
+    <div class="footer-build d-flex justify-content-between mt-3 mt-md-4">
       <span>© built by enixxwizard</span>
       <span id="datestamp"></span>
     </div>
   </div>
-   <script src="./script.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
